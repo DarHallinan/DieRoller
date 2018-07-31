@@ -7,40 +7,60 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!-- Define Rows -->
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="1"/>
+                <GradientStop Color="#FFB72424" Offset="0.161"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <!-- define Rows -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="6*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="3*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="240*" />
+            <RowDefinition Height="40*" />
+            <RowDefinition Height="120*" />
+            <RowDefinition Height="80*" />
+            <RowDefinition Height="40*" />
         </Grid.RowDefinitions>
-        <!-- Define Columns -->
+        <!-- define Columns -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Populate Grid -->
-        <TextBlock Grid.Row="0" Text="Die Roller" FontWeight="Bold" Grid.ColumnSpan="2" FontSize="34" HorizontalAlignment="Center"/>
-        <TextBlock Grid.Row="1" Text="Select which die to roll: " Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="22" FontWeight="Bold"/>
-        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical">
-            <RadioButton Name="twoSide" GroupName="buttons" Content="D2" />
-            <RadioButton Name="fourSide" GroupName="buttons" Content="D4" />
-            <RadioButton Name="sixSide" GroupName="buttons" Content="D6" />
-            <RadioButton Name="eightSide" GroupName="buttons" Content="D8" />
+        <!-- application header -->
+        <TextBlock x:Name="heading" Grid.Row="1" Grid.Column="1" Text="Die Roller" FontWeight="Bold" Grid.ColumnSpan="2" FontSize="48" HorizontalAlignment="Center" FontFamily="Gabriola" Margin="73,0" Grid.RowSpan="2"/>
+        <TextBlock x:Name="subHeading" Grid.Row="2" Grid.Column="1" Text="Select which die to roll: " Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="32" FontWeight="Bold" FontFamily="Gabriola" Margin="33,7,32,0"/>
+        <!-- settings button -->
+        <Button x:Name="settingsButton" Grid.ColumnSpan="4" Content="Settings" HorizontalAlignment="Stretch" Margin="0,0,0,9" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="15" Background="#33350000" Click="Settings_Click"/>
+        <!-- radio buttons -->
+        <StackPanel x:Name="buttons1_4" Grid.Row="3" Grid.Column="1" Orientation="Vertical" BorderThickness="10,0,0,10">
+            <RadioButton Name="twoSide" GroupName="buttons" Content="D2" FontSize="24" FontFamily="Gabriola" FontWeight="Bold" />
+            <RadioButton Name="fourSide" GroupName="buttons" Content="D4" FontFamily="Gabriola" FontSize="24" FontWeight="Bold" />
+            <RadioButton Name="sixSide" GroupName="buttons" Content="D6" FontFamily="Gabriola" FontWeight="Bold" FontSize="24" />
+            <RadioButton Name="eightSide" GroupName="buttons" Content="D8" FontFamily="Gabriola" FontWeight="Bold" FontSize="24" />
         </StackPanel>
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical">
-            <RadioButton Name="tenSide" GroupName="buttons" Content="D10" />
-            <RadioButton Name="twelveSide" GroupName="buttons" Content="D12" />
-            <RadioButton Name="twentySide" GroupName="buttons" Content="D20" />
-            <RadioButton Name="hundredSide" GroupName="buttons" Content="D100" />
+        <StackPanel x:Name="buttons5_8" Grid.Row="3" Grid.Column="2" Orientation="Vertical" BorderThickness="10,0,0,10">
+            <RadioButton Name="tenSide" GroupName="buttons" Content="D10" FontFamily="Gabriola" FontWeight="Bold" FontSize="24" />
+            <RadioButton Name="twelveSide" GroupName="buttons" Content="D12" FontFamily="Gabriola" FontSize="24" FontWeight="Bold" />
+            <RadioButton Name="twentySide" GroupName="buttons" Content="D20" FontFamily="Gabriola" FontSize="24" FontWeight="Bold" />
+            <RadioButton Name="hundredSide" GroupName="buttons" Content="D100" FontFamily="Gabriola" FontWeight="Bold" FontSize="24" />
         </StackPanel>
-        <TextBlock Grid.Row="3" Text="You Rolled:" Grid.Column="0" FontSize="18"/>
-        <TextBox Name="displayRoll" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" IsReadOnly="True" FontSize="28" FontWeight="Bold" BorderThickness="0"/>
-        <Button Name="rollButton" Grid.Row="5" Grid.ColumnSpan="2" Content="Roll!" HorizontalAlignment="Stretch" Height="79" Margin="10,9.667,10,10" RenderTransformOrigin="0.5,0.5" Click="rollButton_Click" Tapped="rollButton_Click" />
+        <!-- box and button for displaying roll result -->
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="You Rolled:" FontSize="36" FontFamily="Gabriola"/>
+        <TextBox x:Name="rollResult" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center" IsReadOnly="True" FontSize="48" BorderThickness="0" Background="{x:Null}" Margin="-46,7,103,5" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None" BorderBrush="{x:Null}" FontFamily="Gabriola" FontWeight="Bold" Text="" Width="93"/>
+        <!-- button for user to get a random number -->
+        <Button Name="rollButton" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Content="~Roll~" HorizontalAlignment="Stretch" Height="79" Margin="10,0,10,1" RenderTransformOrigin="0.5,0.5" Click="rollButton_Click" Tapped="rollButton_Click" Background="#33FF2C2C" BorderBrush="#FF540000" BorderThickness="10,15" FontSize="58" FontFamily="Gabriola" />
+        <!-- border rectangles -->
+        <Rectangle x:Name="borderLeft" Fill="#FF350000" Grid.RowSpan="9" Stroke="#FF340000" StrokeThickness="0" Margin="0,0,10,0"/>
+        <Rectangle x:Name="borderTop" Grid.ColumnSpan="4" Fill="#FF350000" Stroke="#FF340000" StrokeThickness="0" Margin="0,0,0,10"/>
+        <Rectangle x:Name="borderRight" Grid.Column="3" Fill="#FF350000" Grid.RowSpan="9" Stroke="#FF340000" StrokeThickness="0" Margin="10,0,0,0"/>
+        <Rectangle x:Name="borderBottom" Grid.ColumnSpan="4" Fill="#FF350000" Grid.Row="8" Stroke="#FF340000" StrokeThickness="0" Margin="0,10,0,0"/>
 
     </Grid>
 

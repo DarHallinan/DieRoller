@@ -20,9 +20,11 @@ namespace DieRoller
         public MainPage()
         {
             this.InitializeComponent();
+
+            this.settingsButton.Click += Settings_Click;
         }
 
-        // Generates random number
+        // generates random number
         private void rollButton_Click(object sender, RoutedEventArgs e)
         {
              Random rollDie = new Random();
@@ -31,51 +33,55 @@ namespace DieRoller
             // generates random number in range of radio button checked and unchecks button after
             if (twoSide.IsChecked == true)
             {
-                rolledNum = rollDie.Next(0, 2);
+                rolledNum = rollDie.Next(1, 2);
                 twoSide.IsChecked = false;
             }
             else if (fourSide.IsChecked == true)
             {
-                rolledNum = rollDie.Next(0, 4);
+                rolledNum = rollDie.Next(1, 4);
                 fourSide.IsChecked = false;
             }
             else if (sixSide.IsChecked == true)
             {
-                rolledNum = rollDie.Next(0, 6);
+                rolledNum = rollDie.Next(1, 6);
                 sixSide.IsChecked = false;
             }
             else if (eightSide.IsChecked == true)
             {
-                rolledNum = rollDie.Next(0, 8);
+                rolledNum = rollDie.Next(1, 8);
                 eightSide.IsChecked = false;
             }
             else if (tenSide.IsChecked == true)
             {
-                rolledNum = rollDie.Next(0, 10);
+                rolledNum = rollDie.Next(1, 10);
                 tenSide.IsChecked = false;
             }
             else if (twelveSide.IsChecked == true)
             {
-                rolledNum = rollDie.Next(0, 12);
+                rolledNum = rollDie.Next(1, 12);
                 twelveSide.IsChecked = false;
             }
             else if (twentySide.IsChecked == true)
             {
-                rolledNum = rollDie.Next(0, 20);
+                rolledNum = rollDie.Next(1, 20);
                 twentySide.IsChecked = false;
             }
             else if (hundredSide.IsChecked == true)
             {
-                rolledNum = rollDie.Next(0, 10) * 10;
+                rolledNum = rollDie.Next(1, 10) * 10;
                 hundredSide.IsChecked = false;
             }
             else
                 return;
 
+            // takes number and displays it back to the user
+            rollResult.Text = rolledNum.ToString();            
+        }
 
-             // takes number and displays it back to the user
-             displayRoll.Text = rolledNum.ToString();
-             
+        // navigates to settings page
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Settings));
         }
     }
 }
