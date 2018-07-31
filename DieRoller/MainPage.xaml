@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="DieRoller.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DieRoller"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!-- Define Rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <!-- Define Columns -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <!-- Populate Grid -->
+        <TextBlock Grid.Row="0" Text="Die Roller" FontWeight="Bold" Grid.ColumnSpan="2" FontSize="34" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Text="Select which die to roll: " Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="22" FontWeight="Bold"/>
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical">
+            <RadioButton Name="twoSide" GroupName="buttons" Content="D2" />
+            <RadioButton Name="fourSide" GroupName="buttons" Content="D4" />
+            <RadioButton Name="sixSide" GroupName="buttons" Content="D6" />
+            <RadioButton Name="eightSide" GroupName="buttons" Content="D8" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical">
+            <RadioButton Name="tenSide" GroupName="buttons" Content="D10" />
+            <RadioButton Name="twelveSide" GroupName="buttons" Content="D12" />
+            <RadioButton Name="twentySide" GroupName="buttons" Content="D20" />
+            <RadioButton Name="hundredSide" GroupName="buttons" Content="D100" />
+        </StackPanel>
+        <TextBlock Grid.Row="3" Text="You Rolled:" Grid.Column="0" FontSize="18"/>
+        <TextBox Name="displayRoll" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" IsReadOnly="True" FontSize="28" FontWeight="Bold" BorderThickness="0"/>
+        <Button Name="rollButton" Grid.Row="5" Grid.ColumnSpan="2" Content="Roll!" HorizontalAlignment="Stretch" Height="79" Margin="10,9.667,10,10" RenderTransformOrigin="0.5,0.5" Click="rollButton_Click" Tapped="rollButton_Click" />
+
+    </Grid>
+
+</Page>
