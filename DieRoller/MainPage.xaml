@@ -53,6 +53,7 @@
         </StackPanel>
         <!-- box and button for displaying roll result -->
         <TextBlock Grid.Row="4" Grid.Column="1" Text="You Rolled:" FontSize="36" FontFamily="Gabriola"/>
+        <Rectangle x:Name="rollResultBox" Grid.ColumnSpan="2" Grid.Column="1" Fill="#FF661616" Grid.Row="6" Stroke="#FF340000" StrokeThickness="10" RadiusY="36.667" RadiusX="36.667"/>
         <TextBox x:Name="rollResult" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center" IsReadOnly="True" FontSize="48" BorderThickness="0" Background="{x:Null}" Margin="-46,7,103,5" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None" BorderBrush="{x:Null}" FontFamily="Gabriola" FontWeight="Bold" Text="" Width="93"/>
         <!-- button for user to get a random number -->
         <Button Name="rollButton" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Content="~Roll~" HorizontalAlignment="Stretch" Height="79" Margin="10,0,10,1" RenderTransformOrigin="0.5,0.5" Click="rollButton_Click" Tapped="rollButton_Click" Background="#33FF2C2C" BorderBrush="#FF540000" BorderThickness="10,15" FontSize="58" FontFamily="Gabriola" />
@@ -61,7 +62,7 @@
         <Rectangle x:Name="borderTop" Grid.ColumnSpan="4" Fill="#FF350000" Stroke="#FF340000" StrokeThickness="0" Margin="0,0,0,10"/>
         <Rectangle x:Name="borderRight" Grid.Column="3" Fill="#FF350000" Grid.RowSpan="9" Stroke="#FF340000" StrokeThickness="0" Margin="10,0,0,0"/>
         <Rectangle x:Name="borderBottom" Grid.ColumnSpan="4" Fill="#FF350000" Grid.Row="8" Stroke="#FF340000" StrokeThickness="0" Margin="0,10,0,0"/>
-
+        
     </Grid>
 
 </Page>
