@@ -5,9 +5,11 @@
     xmlns:local="using:DieRoller"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-
-    <Grid Background="#FFB72424">
+    mc:Ignorable="d" Loaded="Page_Loaded">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush x:Name="backgroundImage" Stretch="Fill" />
+        </Grid.Background>
         <!-- define Rows -->
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -28,7 +30,31 @@
         <Rectangle Grid.Column="2" Fill="#FF350000" Margin="0.333,0.333,0,0.333" Grid.Row="1" Grid.RowSpan="2" Stroke="#FF340000" StrokeThickness="0"/>
         <Rectangle Grid.ColumnSpan="3" Fill="#FF350000" Margin="0,0,0,-0.333" Stroke="#FF340000" StrokeThickness="0"/>
         <!-- settings button -->
-        <Button x:Name="homeButton" Grid.ColumnSpan="3" Content="Settings" HorizontalAlignment="Stretch" Margin="0,0,0,-0.333" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="15" Background="#33350000" Click="Home_Click"/>
+        <Button x:Name="homeButton" Grid.ColumnSpan="3" Content="Home" HorizontalAlignment="Stretch" Margin="0,0,0,-0.333" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="15" Background="#33350000" Click="Home_Click"/>
+        <TextBlock x:Name="textBlock1" Grid.Column="1" Height="122" Margin="10.333,10.333,9.667,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Text="Select a Background Image:" FontFamily="Gabriola" FontSize="32" FontWeight="Bold"/>
+        <Button x:Name="customImage" Content="Custom Image" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5.333,132.333,14.667,0" Grid.Row="2" VerticalAlignment="Top" Click="Custom_Background" FontFamily="Gabriola" FontSize="18" Height="36"/>
+        <TextBlock x:Name="textBlock2" Grid.Column="1" Margin="15.333,173.333,9.667,204.333" Grid.Row="2" TextWrapping="Wrap" Text="App Info:" FontFamily="Gabriola" FontSize="25" FontWeight="Bold" d:LayoutOverrides="TopPosition, BottomPosition"/>
+        <TextBlock x:Name="textBlock3" Grid.Column="1" Margin="10.333,201.095,117.667,10.632" Grid.Row="2" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" FontFamily="Gabriola" FontSize="22" FontWeight="Bold">
+            <TextBlock.RenderTransform>
+                <CompositeTransform SkewY="-0.699" TranslateY="-0.488"/>
+            </TextBlock.RenderTransform>
+            <Run Text="Created By:"/>
+            <LineBreak/>
+            <Run Text="Release Version:"/>
+            <LineBreak/>
+            <Run Text="App Info"/>
+            <Run Text=":"/>
+        </TextBlock>
+        <TextBlock x:Name="textBlock4" Grid.Column="1" Margin="126.333,201.333,-0.333,177.333" Grid.Row="2" TextWrapping="Wrap" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" FontFamily="Gabriola" FontSize="22">
+            <Run Text="Darr"/>
+            <Run Text="en Hallinan"/>
+            <LineBreak/>
+            <Run Text="1."/>
+            <Run Text="0"/>
+            <Run Text=".0"/>
+            <LineBreak/>
+        </TextBlock>
+        <TextBlock x:Name="textBlock5" Grid.Column="1" Height="137" Margin="10.333,0,14.667,10.333" Grid.Row="2" TextWrapping="Wrap" Text="A die rolling simulato rfor Dungeons an Dragons. Either tap the button or shake your phone for a random number." VerticalAlignment="Bottom"/>
     </Grid>
 
 </Page>
