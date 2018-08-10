@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Numerics;
 using Windows.Devices.Sensors;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -11,19 +13,24 @@ namespace DieRoller
 {
     public sealed partial class MainPage : Page
     {
+        private Accelerometer _accelerometer;
         public MainPage()
         {
             this.InitializeComponent();
 
             this.settingsButton.Click += Settings_Click;
+
+            if (_accelerometer != null)
+                _accelerometer.Shaken += ShakeEvent;
+
         }
+        public int finalRoll = 0;
 
         // generates random number
         public void rollButton_Click(object sender, RoutedEventArgs e)
         {
             Random rollDie = new Random();
             int rolledNum1 = 0, rolledNum2 = 0;
-            int finalRoll = 0;
      
             // generates random number in range of radio button checked and unchecks button after
             if (twoSide.IsChecked == true)
@@ -109,7 +116,96 @@ namespace DieRoller
         }
 
         // code for when user shakes device
-        public AccelerometerReadingType AccelerometerReadingType { get; set; } = AccelerometerReadingType.Standard;
+        private async void ShakeEvent(Accelerometer sender, AccelerometerShakenEventArgs args)
+        {
+            await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Random rollDie = new Random();
+                int rolledNum1 = 0, rolledNum2 = 0;
+
+                // generates random number in range of radio button checked and unchecks button after
+                if (twoSide.IsChecked == true)
+                {
+                    rolledNum1 = rollDie.Next(1, 2);
+                    rolledNum2 = rollDie.Next(1, 2);
+
+                    twoSide.IsChecked = false;
+                }
+                else if (fourSide.IsChecked == true)
+                {
+                    rolledNum1 = rollDie.Next(1, 4);
+                    rolledNum2 = rollDie.Next(1, 4);
+
+                    fourSide.IsChecked = false;
+                }
+                else if (sixSide.IsChecked == true)
+                {
+                    rolledNum1 = rollDie.Next(1, 6);
+                    rolledNum2 = rollDie.Next(1, 6);
+
+                    sixSide.IsChecked = false;
+                }
+                else if (eightSide.IsChecked == true)
+                {
+                    rolledNum1 = rollDie.Next(1, 8);
+                    rolledNum2 = rollDie.Next(1, 8);
+
+                    eightSide.IsChecked = false;
+                }
+                else if (tenSide.IsChecked == true)
+                {
+                    rolledNum1 = rollDie.Next(1, 10);
+                    rolledNum2 = rollDie.Next(1, 10);
+
+                    tenSide.IsChecked = false;
+                }
+                else if (twelveSide.IsChecked == true)
+                {
+                    rolledNum1 = rollDie.Next(1, 12);
+                    rolledNum2 = rollDie.Next(1, 12);
+
+                    twelveSide.IsChecked = false;
+                }
+                else if (twentySide.IsChecked == true)
+                {
+                    rolledNum1 = rollDie.Next(1, 20);
+                    rolledNum2 = rollDie.Next(1, 20);
+
+                    twentySide.IsChecked = false;
+                }
+                else if (hundredSide.IsChecked == true)
+                {
+                    rolledNum1 = rollDie.Next(1, 10) * 10;
+                    rolledNum2 = rollDie.Next(1, 10) * 10;
+
+                    hundredSide.IsChecked = false;
+                }
+                else
+                    return;
+
+                // takes best/worst roll for whether or not advantage/disadvantage is checked
+                if (chooseAdvantages.SelectedIndex == 1)
+                {
+                    if (rolledNum1 > rolledNum2)
+                        finalRoll = rolledNum1;
+                    else
+                        finalRoll = rolledNum2;
+
+                }
+                else if (chooseAdvantages.SelectedIndex == 2)
+                {
+                    if (rolledNum1 > rolledNum2)
+                        finalRoll = rolledNum2;
+                    else
+                        finalRoll = rolledNum1;
+                }
+                else
+                    finalRoll = rolledNum1;
+
+                // takes number and displays it back to the user
+                rollResult.Text = finalRoll.ToString();
+            });
+        }
         // end of phone shaking
 
         // navigates to settings page

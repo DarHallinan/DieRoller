@@ -59,12 +59,12 @@
         <!-- border rectangles -->
         <Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="#FF7A1717" Margin="10,9.667" Grid.Row="5" Stroke="#FF350000" RadiusX="45" RadiusY="45" StrokeThickness="10"/>
         <TextBox x:Name="rollResult" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center" IsReadOnly="True" FontSize="48" BorderThickness="0" Background="{x:Null}" Margin="-46,7,103,5" IsDoubleTapEnabled="False" IsHoldingEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" ManipulationMode="None" BorderBrush="{x:Null}" FontFamily="Gabriola" FontWeight="Bold" Text="" Width="93"/>
-        <Button x:Name="settingsButton" Grid.ColumnSpan="4" Content="Settings" HorizontalAlignment="Stretch" Margin="0,0,0,9" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="15" Background="#33350000" Click="Settings_Click"/>
         <Rectangle x:Name="borderLeft" Fill="#FF350000" Grid.RowSpan="9" Stroke="#FF340000" StrokeThickness="0" Margin="0,0,10,0"/>
         <Rectangle x:Name="borderTop" Grid.ColumnSpan="4" Fill="#FF350000" Stroke="#FF340000" StrokeThickness="0" Margin="0,0,0,10"/>
         <Rectangle x:Name="borderRight" Grid.Column="3" Fill="#FF350000" Grid.RowSpan="9" Stroke="#FF340000" StrokeThickness="0" Margin="10,0,0,0"/>
         <Rectangle x:Name="borderBottom" Grid.ColumnSpan="4" Fill="#FF350000" Grid.Row="8" Stroke="#FF340000" StrokeThickness="0" Margin="0,10,0,0"/>
         <Rectangle Grid.ColumnSpan="2" Grid.Column="1" Fill="#FF731D1D" Height="40" Margin="5,0,5,11.333" Grid.Row="3" Stroke="#FF340000" StrokeThickness="0" VerticalAlignment="Bottom" Opacity="0.5"/>
+        <Button x:Name="settingsButton" Grid.ColumnSpan="4" Content="Settings" HorizontalAlignment="Stretch" Margin="0,0,0,9" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="15" Background="#33350000" Click="Settings_Click"/>
         <ComboBox x:Name="chooseAdvantages" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" Height="40" Margin="10,0,10,11.333" Grid.Row="3" VerticalAlignment="Bottom" PlaceholderText="Select Advantage" FontFamily="Gabriola" FontSize="30" FontWeight="Bold" Background="#667A1717">
             <ComboBoxItem Name="advantageCheck">Advantage</ComboBoxItem>
             <ComboBoxItem Name="disadvantageCheck">Disadvantage</ComboBoxItem>
