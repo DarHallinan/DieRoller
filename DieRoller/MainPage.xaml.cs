@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.Devices.Sensors;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
 
 namespace DieRoller
 {
@@ -29,12 +19,12 @@ namespace DieRoller
         }
 
         // generates random number
-        private void rollButton_Click(object sender, RoutedEventArgs e)
+        public void rollButton_Click(object sender, RoutedEventArgs e)
         {
             Random rollDie = new Random();
             int rolledNum1 = 0, rolledNum2 = 0;
             int finalRoll = 0;
-
+     
             // generates random number in range of radio button checked and unchecks button after
             if (twoSide.IsChecked == true)
             {
@@ -94,9 +84,9 @@ namespace DieRoller
             }
             else
                 return;
-            /*
+
             // takes best/worst roll for whether or not advantage/disadvantage is checked
-            if (advantage.IsChecked == true)
+            if (chooseAdvantages.SelectedIndex == 1)
             {
                 if (rolledNum1 > rolledNum2)
                     finalRoll = rolledNum1;
@@ -104,7 +94,7 @@ namespace DieRoller
                     finalRoll = rolledNum2;
 
             }
-            else if (disadvantage.IsChecked == true)
+            else if (chooseAdvantages.SelectedIndex == 2)
             {
                 if (rolledNum1 > rolledNum2)
                     finalRoll = rolledNum2;
@@ -113,12 +103,14 @@ namespace DieRoller
             }
             else
                 finalRoll = rolledNum1;
-                */
-            // takes number and displays it back to the user
-            //rollResult.Text = finalRoll.ToString();
-            rollResult.Text = rolledNum1.ToString();
 
+            // takes number and displays it back to the user
+            rollResult.Text = finalRoll.ToString();
         }
+
+        // code for when user shakes device
+        public AccelerometerReadingType AccelerometerReadingType { get; set; } = AccelerometerReadingType.Standard;
+        // end of phone shaking
 
         // navigates to settings page
         private void Settings_Click(object sender, RoutedEventArgs e)

@@ -23,6 +23,9 @@
             <ColumnDefinition Width="5*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+        <Rectangle Grid.Column="1" Fill="#FF731D1D" Margin="15.333,10.333,14.667,37.667" Grid.Row="1" Stroke="Black" Opacity="0.5"/>
+        <Rectangle Grid.Column="1" Fill="#FF731D1D" Height="99" Margin="5.333,10.333,4.667,0" Grid.Row="2" Stroke="Black" VerticalAlignment="Top" Opacity="0.5"/>
+        <Rectangle Grid.Column="1" Fill="#FF731D1D" Margin="10.333,173.333,14.667,10.333" Grid.Row="2" Stroke="Black" Opacity="0.5"/>
         <TextBlock x:Name="textBlock" Margin="43.333,3.333,9.667,9.667" TextWrapping="Wrap" Text="Settings" FontFamily="Gabriola" FontWeight="ExtraBold" FontSize="72" Grid.Column="1" Grid.Row="1" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition"/>
         <!-- border rectangles -->
         <Rectangle Grid.ColumnSpan="3" Fill="#FF350000" Margin="0,-0.333,0,0" Grid.Row="3" Stroke="#FF340000" StrokeThickness="0"/>
@@ -32,7 +35,7 @@
         <!-- settings button -->
         <Button x:Name="homeButton" Grid.ColumnSpan="3" Content="Home" HorizontalAlignment="Stretch" Margin="0,0,0,-0.333" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="15" Background="#33350000" Click="Home_Click"/>
         <TextBlock x:Name="textBlock1" Grid.Column="1" Height="122" Margin="10.333,10.333,9.667,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Text="Select a Background Image:" FontFamily="Gabriola" FontSize="32" FontWeight="Bold"/>
-        <Button x:Name="customImage" Content="Custom Image" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5.333,132.333,14.667,0" Grid.Row="2" VerticalAlignment="Top" Click="Custom_Background" FontFamily="Gabriola" FontSize="18" Height="36"/>
+        <Button x:Name="customImage" Content="Custom Image" Grid.Column="1" HorizontalAlignment="Left" Margin="10.333,114.333,0,0" Grid.Row="2" VerticalAlignment="Top" Click="Custom_Background" FontFamily="Gabriola" FontSize="18" Height="36" Background="#33B62828" Width="242"/>
         <TextBlock x:Name="textBlock2" Grid.Column="1" Margin="15.333,173.333,9.667,204.333" Grid.Row="2" TextWrapping="Wrap" Text="App Info:" FontFamily="Gabriola" FontSize="25" FontWeight="Bold" d:LayoutOverrides="TopPosition, BottomPosition"/>
         <TextBlock x:Name="textBlock3" Grid.Column="1" Margin="10.333,201.095,117.667,10.632" Grid.Row="2" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" d:LayoutOverrides="LeftPosition, RightPosition, TopPosition, BottomPosition" FontFamily="Gabriola" FontSize="22" FontWeight="Bold">
             <TextBlock.RenderTransform>
