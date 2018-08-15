@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Numerics;
 using Windows.Devices.Sensors;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -27,11 +26,20 @@ namespace DieRoller
         public int finalRoll = 0;
 
         // generates random number
-        public void rollButton_Click(object sender, RoutedEventArgs e)
+        public async void rollButton_Click(object sender, RoutedEventArgs e)
         {
+            // plays sound when button is pressed
+            MediaElement dieNoise = new MediaElement();
+            Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            Windows.Storage.StorageFile file = await folder.GetFileAsync("dieRolling.wav");
+            var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            dieNoise.SetSource(stream, file.ContentType);
+            dieNoise.Play();
+
+            // rest of code for calculating random numbers
             Random rollDie = new Random();
             int rolledNum1 = 0, rolledNum2 = 0;
-     
+
             // generates random number in range of radio button checked and unchecks button after
             if (twoSide.IsChecked == true)
             {
@@ -209,8 +217,15 @@ namespace DieRoller
         // end of phone shaking
 
         // navigates to settings page
-        private void Settings_Click(object sender, RoutedEventArgs e)
+        private async void Settings_Click(object sender, RoutedEventArgs e)
         {
+            // plays sound when button is pressed
+            MediaElement settingsNoise = new MediaElement();
+            Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            Windows.Storage.StorageFile file = await folder.GetFileAsync("buttonPress.wav");
+            var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            settingsNoise.SetSource(stream, file.ContentType);
+            settingsNoise.Play();
             this.Frame.Navigate(typeof(Settings));
         }
 

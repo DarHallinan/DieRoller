@@ -18,15 +18,20 @@ namespace DieRoller
         }
 
         // navigates to home page
-        private void Home_Click(object sender, RoutedEventArgs e)
+        private async void Home_Click(object sender, RoutedEventArgs e)
         {
+            MediaElement settingsNoise = new MediaElement();
+            Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            Windows.Storage.StorageFile file = await folder.GetFileAsync("buttonPress.wav");
+            var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            settingsNoise.SetSource(stream, file.ContentType);
+            settingsNoise.Play();
             this.Frame.Navigate(typeof(MainPage));
         }
 
         public static BitmapImage BitmapImage = new BitmapImage();
         // changes theme of the app
         // custom theme
-        // code taken from https://www.youtube.com/watch?v=Z_JNhMe43Rg
         private async void Custom_Background(object sender, RoutedEventArgs e)
         {
             IRandomAccessStream fileStream;
